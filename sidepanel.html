@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Workspace Toolkits</title>
+    <!-- Use direct CSS loading, Vite will resolve this -->
+  </head>
+
+  <body>
+    <div id="app" class="sidepanel-container">
+      <header>
+        <div class="logo-container">
+          <img class="logo-img" src="assets/icon_128.png" alt="Workspace Toolkits Logo" />
+          <h1 class="logo-text">Workspace Toolkits</h1>
+        </div>
+      </header>
+
+      <main>
+        <!-- General Settings -->
+        <details class="accordion" data-id="general" open>
+          <summary class="accordion-header">
+            <h2>General Settings</h2>
+            <svg
+              class="chevron"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <div class="accordion-content">
+            <div class="setting-row">
+              <label for="md-theme">Preview Theme</label>
+              <select id="md-theme" class="modern-select">
+                <option value="auto">System Default</option>
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+        <div id="draggable-container">
+          <!-- Google Docs -->
+          <details class="accordion" draggable="true" data-id="docs" open>
+            <summary class="accordion-header">
+              <div class="header-left">
+                <svg
+                  class="drag-handle"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="9" cy="5" r="1"></circle>
+                  <circle cx="9" cy="12" r="1"></circle>
+                  <circle cx="9" cy="19" r="1"></circle>
+                  <circle cx="15" cy="5" r="1"></circle>
+                  <circle cx="15" cy="12" r="1"></circle>
+                  <circle cx="15" cy="19" r="1"></circle>
+                </svg>
+                <h2>Google Docs</h2>
+              </div>
+              <svg
+                class="chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="accordion-content">
+              <p class="description">
+                Select markdown text in Docs to show a floating preview button and render in the
+                sidebar.
+              </p>
+              <div class="setting-row">
+                <label for="docs-enabled">Enable Integration</label>
+                <label class="switch">
+                  <input type="checkbox" id="docs-enabled" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <details class="guide-details">
+                <summary class="guide-summary">Formatting Guide</summary>
+                <div class="guide-content">
+                  <h4>Markdown Support</h4>
+                  <ul>
+                    <li>Headings: <code># H1</code>, <code>## H2</code></li>
+                    <li>Styles: <code>**bold**</code>, <code>*italic*</code></li>
+                    <li>Lists: <code>- Item</code>, <code>1. Item</code></li>
+                    <li>Tables: Standard GF Markdown tables</li>
+                  </ul>
+                  <h4>Math (KaTeX)</h4>
+                  <ul>
+                    <li>Inline Math: <code>$E = mc^2$</code></li>
+                    <li>Block Math: <code>$$ \text{Total} = \sum_{i=1}^n x_i $$</code></li>
+                  </ul>
+                  <h4>Mermaid Diagrams</h4>
+                  <ul>
+                    <li>Use <code>```mermaid</code> block inside selection</li>
+                  </ul>
+                </div>
+              </details>
+              <div class="feature-tags">
+                <span class="tag">Docs</span>
+                <span class="tag">Math (KaTeX)</span>
+                <span class="tag">Mermaid</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Google Sheets -->
+          <details class="accordion" draggable="true" data-id="sheets" open>
+            <summary class="accordion-header">
+              <div class="header-left">
+                <svg
+                  class="drag-handle"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="9" cy="5" r="1"></circle>
+                  <circle cx="9" cy="12" r="1"></circle>
+                  <circle cx="9" cy="19" r="1"></circle>
+                  <circle cx="15" cy="5" r="1"></circle>
+                  <circle cx="15" cy="12" r="1"></circle>
+                  <circle cx="15" cy="19" r="1"></circle>
+                </svg>
+                <h2>Google Sheets</h2>
+              </div>
+              <svg
+                class="chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="accordion-content">
+              <p class="description">Render Markdown in selected cells or formula inputs.</p>
+              <div class="setting-row">
+                <label for="sheets-enabled">Enable Integration</label>
+                <label class="switch">
+                  <input type="checkbox" id="sheets-enabled" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <label for="sheets-btn-position">Button Position</label>
+                <select id="sheets-btn-position" class="modern-select">
+                  <option value="bottom-right">Bottom Right</option>
+                  <option value="bottom-left">Bottom Left</option>
+                  <option value="top-right">Top Right</option>
+                  <option value="top-left">Top Left</option>
+                </select>
+              </div>
+              <details class="guide-details">
+                <summary class="guide-summary">Formatting Guide</summary>
+                <div class="guide-content">
+                  <h4>Explicit Markdown Wrapper</h4>
+                  <p style="margin: 0 0 6px 0">
+                    Optionally wrap cell content to explicitly mark as Markdown:
+                  </p>
+                  <pre
+                    style="
+                      margin: 4px 0 8px 0;
+                      font-family: monospace;
+                      font-size: 0.7rem;
+                      background: rgba(0, 0, 0, 0.04);
+                      padding: 4px;
+                      border-radius: 4px;
+                      overflow-x: auto;
+                      color: var(--text-primary);
+                    "
+                  >
+```markdown
+## Cell Title
+Markdown body...
+```</pre
+                  >
+                  <h4>Math (KaTeX)</h4>
+                  <ul>
+                    <li>Inline Math: <code>$Price_i \times Qty_i$</code></li>
+                    <li>Block Math: <code>$$ \text{Total} = \sum ... $$</code></li>
+                  </ul>
+                  <h4>Mermaid Diagrams</h4>
+                  <ul>
+                    <li>Use <code>```mermaid</code> block inside cells.</li>
+                  </ul>
+                </div>
+              </details>
+              <div class="feature-tags">
+                <span class="tag">Sheets</span>
+                <span class="tag">Math (KaTeX)</span>
+                <span class="tag">Mermaid</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Google Drive -->
+          <details class="accordion" draggable="true" data-id="drive" open>
+            <summary class="accordion-header">
+              <div class="header-left">
+                <svg
+                  class="drag-handle"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="9" cy="5" r="1"></circle>
+                  <circle cx="9" cy="12" r="1"></circle>
+                  <circle cx="9" cy="19" r="1"></circle>
+                  <circle cx="15" cy="5" r="1"></circle>
+                  <circle cx="15" cy="12" r="1"></circle>
+                  <circle cx="15" cy="19" r="1"></circle>
+                </svg>
+                <h2>Google Drive</h2>
+              </div>
+              <svg
+                class="chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="accordion-content">
+              <p class="description">
+                Preview Markdown and text files directly inside the Drive preview window.
+              </p>
+              <div class="setting-row">
+                <label for="drive-enabled">Enable Integration</label>
+                <label class="switch">
+                  <input type="checkbox" id="drive-enabled" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <label for="drive-btn-position">Button Position</label>
+                <select id="drive-btn-position" class="modern-select">
+                  <option value="bottom-right">Bottom Right</option>
+                  <option value="bottom-left">Bottom Left</option>
+                  <option value="top-right">Top Right</option>
+                  <option value="top-left">Top Left</option>
+                </select>
+              </div>
+              <details class="guide-details">
+                <summary class="guide-summary">Formatting Guide</summary>
+                <div class="guide-content">
+                  <h4>Drive Markdown Files</h4>
+                  <ul>
+                    <li>Click <strong>Show Raw Text</strong> in Drive's native file viewer.</li>
+                    <li>
+                      Renders standard Markdown files (<code>.md</code>, <code>.txt</code>)
+                      dynamically.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+              <div class="feature-tags">
+                <span class="tag">Drive</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </main>
+
+      <footer>
+        <p id="app-version"></p>
+      </footer>
+    </div>
+    <script type="module" src="/src/sidepanel/sidepanel.ts"></script>
+  </body>
+</html>

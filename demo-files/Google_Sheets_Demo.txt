@@ -1,0 +1,28 @@
+SCREENSHOT TIP: To make the Google Sheets screenshot look highly realistic, do not just paste this into an empty sheet. 
+1. Create a sheet named "Q3 Financials".
+2. Fill columns A and B with some generic data (e.g., "Month", "Income", "Expenses").
+3. Merge a few cells (e.g., C2 to E10) to make a large notes cell.
+4. Double click that large cell and paste the markdown block below.
+This will show exactly how the Markdown Toolkit extracts beautifully formatted graphs and math equations right out of a dense corporate spreadsheet!
+
+```markdown
+## 📊 Q3/2026 Revenue Report
+
+Revenue statistics calculated using the following formula:
+$$
+\text{Total} = \sum_{i=1}^{n} (Price_i \times Qty_i) \times (1 - Tax)
+$$
+
+| Month | Revenue | Growth |
+|-------|---------|--------|
+| Jul | $12,500 | +5% |
+| Aug | $14,200 | +12% |
+| Sep | $19,000 | +33% |
+
+```mermaid
+pie title Revenue Distribution
+    "Product A" : 45
+    "Product B" : 30
+    "Services" : 25
+```
+```

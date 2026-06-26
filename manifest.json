@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Google Workspace Toolkits",
+  "version": "1.0.0",
+  "description": "Google Workspace Toolkits - Markdown preview and privacy tools.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "sidePanel",
+    "scripting",
+    "tabs",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "optional_host_permissions": [
+    "https://drive.google.com/*",
+    "https://drive.usercontent.google.com/*",
+    "https://*.googleusercontent.com/*",
+    "https://docs.google.com/document/*",
+    "https://docs.google.com/spreadsheets/*",
+    "https://docs.google.com/*"
+  ],
+  "action": {
+    "default_title": "Google Workspace Toolkits",
+    "default_icon": {
+      "16": "assets/icon_16.png",
+      "48": "assets/icon_48.png",
+      "128": "assets/icon_128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon_16.png",
+    "48": "assets/icon_48.png",
+    "128": "assets/icon_128.png"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["katex.min.css", "fonts/*", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

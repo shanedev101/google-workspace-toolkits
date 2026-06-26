@@ -1,0 +1,45 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers on version tags like v1.0.1, v2.0.0, etc.
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & Draft Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format Check
+        run: npx prettier --check "src/**/*.{ts,css}" "sidepanel.html" "*.json"
+
+      - name: Build & Package
+        run: npm run pack
+
+      - name: Draft GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          prerelease: false
+          files: google-ws-toolkits-v*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
