@@ -1,5 +1,5 @@
 /**
- * Background service worker for Google Workspace Toolkits.
+ * Background service worker for Workspace Toolkit for Google.
  *
  * Responsibilities:
  * - Opens the side panel when the extension icon is clicked.
@@ -10,7 +10,7 @@
  *   cannot perform cross-origin fetches directly.
  */
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('Google Workspace Toolkits Chrome Extension Installed.');
+  console.log('Workspace Toolkit for Google Chrome Extension Installed.');
 
   // Set default settings
   chrome.storage.local.get(['themeMode'], (result: { themeMode?: string }) => {
@@ -68,12 +68,12 @@ chrome.runtime.onInstalled.addListener(() => {
         () => {
           if (chrome.runtime.lastError) {
             console.error(
-              '[Google Workspace Toolkits] Failed to register dynamic rules:',
+              '[Workspace Toolkit for Google] Failed to register dynamic rules:',
               chrome.runtime.lastError.message
             );
           } else {
             console.log(
-              '[Google Workspace Toolkits] Dynamic CORS bypass rules registered successfully.'
+              '[Workspace Toolkit for Google] Dynamic CORS bypass rules registered successfully.'
             );
           }
         }

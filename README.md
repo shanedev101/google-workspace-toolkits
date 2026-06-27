@@ -1,8 +1,8 @@
-# Google Workspace Toolkits
+# Workspace Toolkit for Google
 
 <!-- markdownlint-disable MD033 -->
 <p align="center">
-  <img src="assets/icon.png" width="128" height="128" alt="Google Workspace Toolkits icon">
+  <img src="assets/icon.png" width="128" height="128" alt="Workspace Toolkit for Google icon">
 </p>
 <!-- markdownlint-enable MD033 -->
 

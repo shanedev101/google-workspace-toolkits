@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (hasPermission) {
       // Sync tab states and inject scripts if integration is already enabled on load/reload
       notifyTabsOfStateChange(key, true).catch((err) => {
-        console.error(`[Google Workspace Toolkits] Failed to initialize state for ${key}:`, err);
+        console.error(`[Workspace Toolkit for Google] Failed to initialize state for ${key}:`, err);
       });
     }
 
@@ -219,13 +219,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             try {
               await chrome.scripting.registerContentScripts(config.scripts);
-              console.log(`[Google Workspace Toolkits] Registered scripts for ${key}`);
+              console.log(`[Workspace Toolkit for Google] Registered scripts for ${key}`);
 
               // Apply immediately to matching active tabs
               await notifyTabsOfStateChange(key, true);
             } catch (error) {
               console.error(
-                `[Google Workspace Toolkits] Failed to register scripts for ${key}:`,
+                `[Workspace Toolkit for Google] Failed to register scripts for ${key}:`,
                 error
               );
               checkbox.checked = false;
@@ -251,11 +251,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             // Revoke permission
             chrome.permissions.remove({ origins: config.origins }, (removed) => {
-              console.log(`[Google Workspace Toolkits] Revoked permissions for ${key}: ${removed}`);
+              console.log(
+                `[Workspace Toolkit for Google] Revoked permissions for ${key}: ${removed}`
+              );
             });
           } catch (error) {
             console.error(
-              `[Google Workspace Toolkits] Failed to disable integration for ${key}:`,
+              `[Workspace Toolkit for Google] Failed to disable integration for ${key}:`,
               error
             );
           }

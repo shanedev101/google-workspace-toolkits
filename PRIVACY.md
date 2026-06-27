@@ -2,7 +2,7 @@
 
 Last updated: May 26, 2026
 
-Google Workspace Toolkits is a browser extension built by **shanedev101**.
+Workspace Toolkit for Google is a browser extension built by **shanedev101**.
 
 ## Data collection
 

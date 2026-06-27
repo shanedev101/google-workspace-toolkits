@@ -1,7 +1,7 @@
 {
   "name": "google-ws-toolkits",
   "version": "1.0.0",
-  "description": "Google Workspace Toolkits - Markdown preview and privacy tools.",
+  "description": "Workspace Toolkit for Google - Markdown preview and privacy tools.",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",

@@ -1,4 +1,7 @@
-console.log('[Google Workspace Toolkits Iframe] Script injected. Frame URL:', window.location.href);
+console.log(
+  '[Workspace Toolkit for Google Iframe] Script injected. Frame URL:',
+  window.location.href
+);
 
 const isIframe = window !== window.parent;
 
@@ -30,10 +33,10 @@ const sendTextToParent = () => {
     const text = textContainer.innerText || textContainer.textContent || '';
     if (text) {
       console.log(
-        '[Google Workspace Toolkits Iframe] Text found! Sending to parent. Length:',
+        '[Workspace Toolkit for Google Iframe] Text found! Sending to parent. Length:',
         text.length
       );
-      window.parent.postMessage({ type: 'GOOGLE_WORKSPACE_TOOLKITS_RAW_TEXT', text }, '*');
+      window.parent.postMessage({ type: 'WORKSPACE_TOOLKIT_FOR_GOOGLE_RAW_TEXT', text }, '*');
     }
   }
 };
@@ -56,7 +59,7 @@ if (isIframe) {
 
   // Listen for parent requests to re-send the text (avoids postMessage race conditions)
   window.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'GOOGLE_WORKSPACE_TOOLKITS_REQUEST_TEXT') {
+    if (event.data && event.data.type === 'WORKSPACE_TOOLKIT_FOR_GOOGLE_REQUEST_TEXT') {
       sendTextToParent();
     }
   });

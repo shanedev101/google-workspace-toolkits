@@ -261,9 +261,9 @@ function closeSheetsMarkdownModal() {
 
 // Watch sheets cell selection and edits with dynamic toggle support.
 if (window.isMdSheetsContextValid && window.isMdSheetsContextValid()) {
-  console.log('Google Workspace Toolkits Sheets: Valid instance already running.');
+  console.log('Workspace Toolkit for Google Sheets: Valid instance already running.');
 } else {
-  console.log('Google Workspace Toolkits Sheets: Initializing...');
+  console.log('Workspace Toolkit for Google Sheets: Initializing...');
   // Clean up old UI elements
   removeSheetsPreviewButton();
   closeSheetsMarkdownModal();
@@ -332,4 +332,4 @@ if (window.isMdSheetsContextValid && window.isMdSheetsContextValid()) {
   startObserving();
 }
 
-console.log('Google Workspace Toolkits Sheets Content Script Loaded Successfully.');
+console.log('Workspace Toolkit for Google Sheets Content Script Loaded Successfully.');

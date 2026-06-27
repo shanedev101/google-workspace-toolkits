@@ -197,7 +197,7 @@ function handlePreviewMutation() {
 
   if (!headerInfo) {
     if (lastHeaderId !== null || lastHeaderName !== null) {
-      console.log('[Google Workspace Toolkits] Preview closed.');
+      console.log('[Workspace Toolkit for Google] Preview closed.');
       lastHeaderId = null;
       lastHeaderName = null;
       iframeRawText = null;
@@ -212,7 +212,7 @@ function handlePreviewMutation() {
   const { fileName, fileId } = headerInfo;
 
   if (fileId !== lastHeaderId || fileName !== lastHeaderName) {
-    console.log('[Google Workspace Toolkits] Scanned for preview header:', headerInfo);
+    console.log('[Workspace Toolkit for Google] Scanned for preview header:', headerInfo);
 
     // Clean up old elements from previous file preview if they exist
     const btn = document.getElementById('md-preview-toggle-btn');
@@ -252,7 +252,7 @@ function handlePreviewMutation() {
   // If header is found but textContainer is not loaded yet, start polling
   if (!retryInterval) {
     console.log(
-      '[Google Workspace Toolkits] Header found but textContainer missing. Starting polling retry...'
+      '[Workspace Toolkit for Google] Header found but textContainer missing. Starting polling retry...'
     );
     let attempts = 0;
     retryInterval = setInterval(() => {
@@ -266,7 +266,7 @@ function handlePreviewMutation() {
         }
       } else if (attempts > 30) {
         // 6 seconds maximum wait
-        console.log('[Google Workspace Toolkits] Polling retry timed out.');
+        console.log('[Workspace Toolkit for Google] Polling retry timed out.');
         clearInterval(retryInterval!);
         retryInterval = null;
       }
@@ -278,7 +278,7 @@ function requestTextFromIframes() {
   const iframes = document.querySelectorAll('iframe');
   iframes.forEach((iframe) => {
     try {
-      iframe.contentWindow?.postMessage({ type: 'GOOGLE_WORKSPACE_TOOLKITS_REQUEST_TEXT' }, '*');
+      iframe.contentWindow?.postMessage({ type: 'WORKSPACE_TOOLKIT_FOR_GOOGLE_REQUEST_TEXT' }, '*');
     } catch (err) {
       // Ignore
     }
@@ -423,7 +423,7 @@ function injectPreviewToggle(textContainer: HTMLElement, fileId: string | null) 
             }
           }
         } catch (fetchErr) {
-          console.warn('[Google Workspace Toolkits] Direct fetch fallback failed:', fetchErr);
+          console.warn('[Workspace Toolkit for Google] Direct fetch fallback failed:', fetchErr);
         } finally {
           button.style.opacity = '';
           button.style.cursor = '';
@@ -552,9 +552,9 @@ function injectPreviewToggle(textContainer: HTMLElement, fileId: string | null) 
 }
 
 if (window.isMdDriveContextValid && window.isMdDriveContextValid()) {
-  console.log('Google Workspace Toolkits Drive: Valid instance already running.');
+  console.log('Workspace Toolkit for Google Drive: Valid instance already running.');
 } else {
-  console.log('Google Workspace Toolkits Drive: Initializing...');
+  console.log('Workspace Toolkit for Google Drive: Initializing...');
   cleanupOldContext();
 
   window.isMdDriveContextValid = () => isContextValid();
@@ -630,7 +630,7 @@ if (window.isMdDriveContextValid && window.isMdDriveContextValid()) {
   startObserving();
 }
 
-console.log('Google Workspace Toolkits Drive Content Script Loaded Successfully.');
+console.log('Workspace Toolkit for Google Drive Content Script Loaded Successfully.');
 
 // -----------------------------------------------------------------------------
 // CROSS-ORIGIN IFRAME RAW TEXT EXTRACTION SYSTEM (PARENT LISTENER)
@@ -640,10 +640,10 @@ function handleIframeMessage(event: MessageEvent) {
     window.removeEventListener('message', handleIframeMessage);
     return;
   }
-  if (event.data && event.data.type === 'GOOGLE_WORKSPACE_TOOLKITS_RAW_TEXT') {
+  if (event.data && event.data.type === 'WORKSPACE_TOOLKIT_FOR_GOOGLE_RAW_TEXT') {
     iframeRawText = event.data.text;
     console.log(
-      '[Google Workspace Toolkits] Raw text received from iframe. Length:',
+      '[Workspace Toolkit for Google] Raw text received from iframe. Length:',
       iframeRawText?.length
     );
   }

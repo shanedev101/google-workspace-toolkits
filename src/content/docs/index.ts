@@ -120,9 +120,9 @@ document.addEventListener(
 // Setup selection listener with runtime toggle support using capture phase (true)
 // to bypass Google Docs' internal e.stopPropagation() calls on mouse/keyboard events.
 if (window.isMdDocsContextValid && window.isMdDocsContextValid()) {
-  console.log('Google Workspace Toolkits Docs: Valid instance already running.');
+  console.log('Workspace Toolkit for Google Docs: Valid instance already running.');
 } else {
-  console.log('Google Workspace Toolkits Docs: Initializing...');
+  console.log('Workspace Toolkit for Google Docs: Initializing...');
   // Clean up any old indicators/sidebars from a dead script
   const existingIndicator = document.getElementById('md-docs-indicator');
   if (existingIndicator) existingIndicator.remove();
@@ -465,4 +465,4 @@ function closeMarkdownSidebar() {
   }
 }
 
-console.log('Google Workspace Toolkits Docs Content Script Loaded Successfully.');
+console.log('Workspace Toolkit for Google Docs Content Script Loaded Successfully.');

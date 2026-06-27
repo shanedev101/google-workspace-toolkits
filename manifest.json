@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Google Workspace Toolkits",
+  "name": "Workspace Toolkit for Google",
   "version": "1.0.0",
-  "description": "Google Workspace Toolkits - Markdown preview and privacy tools.",
+  "description": "Workspace Toolkit for Google - Markdown preview and privacy tools.",
   "permissions": [
     "storage",
     "declarativeNetRequest",
@@ -21,7 +21,7 @@
     "https://docs.google.com/*"
   ],
   "action": {
-    "default_title": "Google Workspace Toolkits",
+    "default_title": "Workspace Toolkit for Google",
     "default_icon": {
       "16": "assets/icon_16.png",
       "48": "assets/icon_48.png",
