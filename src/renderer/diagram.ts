@@ -26,7 +26,7 @@ export async function renderDiagrams(
     mermaid.initialize({
       startOnLoad: false,
       theme: isDarkMode ? 'dark' : 'default',
-      securityLevel: 'loose',
+      securityLevel: 'strict',
       logLevel: 'fatal',
     });
     mermaidInitialized = true;
@@ -73,10 +73,12 @@ export async function renderDiagrams(
           </svg>
           <div>
             <div style="font-weight: 600; margin-bottom: 4px;">Mermaid Diagram Error</div>
-            <div style="font-size: 13px; font-family: monospace; opacity: 0.9;">${errMessage}</div>
+            <div class="mermaid-error-message" style="font-size: 13px; font-family: monospace; opacity: 0.9;"></div>
           </div>
         </div>
       `;
+      const msgEl = chartDiv.querySelector('.mermaid-error-message');
+      if (msgEl) msgEl.textContent = errMessage;
     }
   }
 }

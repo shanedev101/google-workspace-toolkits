@@ -6,8 +6,6 @@
  * - Registers and unregisters content scripts based on the user's enabled
  *   integrations and the permissions that have been granted.
  * - Adds a declarativeNetRequest rule to bypass CORS on Drive preview downloads.
- * - Proxies authenticated `fetch` requests on behalf of content scripts that
- *   cannot perform cross-origin fetches directly.
  */
 chrome.runtime.onInstalled.addListener(() => {
   console.log('Workspace Toolkit for Google Chrome Extension Installed.');
@@ -53,7 +51,9 @@ chrome.runtime.onInstalled.addListener(() => {
           ],
         },
         condition: {
-          urlFilter: 'googleusercontent.com',
+          urlFilter: '||googleusercontent.com',
+          initiatorDomains: ['drive.google.com'],
+          resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST],
         },
       },
     ];
@@ -79,26 +79,6 @@ chrome.runtime.onInstalled.addListener(() => {
         }
       );
     });
-  }
-});
-
-// Listener to handle safe, CORS-free network fetches on behalf of content scripts
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'FETCH_URL') {
-    fetch(message.url, { credentials: 'include' })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Fetch failed with status ${res.status}`);
-        }
-        return res.text();
-      })
-      .then((text) => {
-        sendResponse({ success: true, text });
-      })
-      .catch((err) => {
-        sendResponse({ success: false, error: err.message });
-      });
-    return true; // Keep the message channel open for async response
   }
 });
 

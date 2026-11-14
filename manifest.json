@@ -42,7 +42,7 @@
   "web_accessible_resources": [
     {
       "resources": ["katex.min.css", "fonts/*", "assets/*"],
-      "matches": ["<all_urls>"]
+      "matches": ["https://docs.google.com/*", "https://drive.google.com/*"]
     }
   ]
 }

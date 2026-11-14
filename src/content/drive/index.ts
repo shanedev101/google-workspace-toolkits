@@ -640,7 +640,19 @@ function handleIframeMessage(event: MessageEvent) {
     window.removeEventListener('message', handleIframeMessage);
     return;
   }
-  if (event.data && event.data.type === 'WORKSPACE_TOOLKIT_FOR_GOOGLE_RAW_TEXT') {
+  let originHost = '';
+  try {
+    originHost = new URL(event.origin).hostname;
+  } catch {
+    return;
+  }
+  const trustedOrigin = /(^|\.)(google\.com|googleusercontent\.com)$/.test(originHost);
+  if (
+    trustedOrigin &&
+    event.data &&
+    event.data.type === 'WORKSPACE_TOOLKIT_FOR_GOOGLE_RAW_TEXT' &&
+    typeof event.data.text === 'string'
+  ) {
     iframeRawText = event.data.text;
     console.log(
       '[Workspace Toolkit for Google] Raw text received from iframe. Length:',
